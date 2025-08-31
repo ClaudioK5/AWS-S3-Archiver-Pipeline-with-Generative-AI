@@ -2,11 +2,12 @@ from openai import OpenAI
 from email_sender import send_email
 
 client = OpenAI(
-    api_key="insert your deepseek api key here",
+    api_key="insert here your deepseek api key",
     base_url="https://api.deepseek.com/v1"
 )
 
-def generate_AIreport(prompt):
+
+def AI_report_sender(prompt):
 
 
     try:
@@ -16,13 +17,9 @@ def generate_AIreport(prompt):
 
         ai_output = response.choices[0].message.content.strip()
 
-        print(ai_output)
+        subject = 'AI AWS report for the current month'
 
-        subject = 'AI AWS report for the current month '
-
-        send_email('insert your email', subject, ai_output)
-
-        print("email sent successfully!")
+        send_email('insert here your email', subject, ai_output)
 
     except Exception as e:
 
