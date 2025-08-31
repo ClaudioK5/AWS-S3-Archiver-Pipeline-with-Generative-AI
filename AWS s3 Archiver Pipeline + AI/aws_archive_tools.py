@@ -5,6 +5,7 @@ from botocore.exceptions import ClientError
 
 s3 = boto3.client("s3")
 
+
 def key_exists(bucket, key):
 
     try:
@@ -17,6 +18,8 @@ def key_exists(bucket, key):
         if e.response['Error']['Code'] == "404":
 
             return False
+
+
 
 def safe_key(bucket, target_key):
 
@@ -38,7 +41,9 @@ def safe_key(bucket, target_key):
 
         i += 1
 
-def normalize_bucket(bucket_name):
+
+
+def s3_files_archiver(bucket_name):
 
     paginator = s3.get_paginator("list_objects_v2")
 
@@ -75,6 +80,8 @@ def normalize_bucket(bucket_name):
             s3.delete_object(Bucket=bucket_name, Key=key)
 
     return changes
+
+
 
 def list_files_for_month(bucket_name, year, month):
 
