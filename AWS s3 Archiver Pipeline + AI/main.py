@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from aws_filetextretriever_tools import get_files_for_current_month
 import time
 
-bucket_name = "pythonaswbucket"
+bucket_name = "insert here your bucket name"
 
 
 while True:
@@ -22,5 +22,6 @@ while True:
         AI_report_maker(files, bucket_name)
 
     time.sleep(86400)
+
 
 
