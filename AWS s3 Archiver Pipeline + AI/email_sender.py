@@ -2,6 +2,7 @@ import sys
 import smtplib
 from email.message import EmailMessage
 
+
 def send_email(to_email, subject, body):
     msg = EmailMessage()
     msg['Subject'] = subject
