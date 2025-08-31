@@ -1,43 +1,38 @@
 import boto3
-from generate_Report import generate_AIreport
-from aws_filetextretriever_tools import get_files_for_current_month, extract_text_from_pdf_stream, scanx3_grab_all_text
+from AI_report_sender import AI_report_sender
+from aws_filetextretriever_tools import pdf_file_text_extractor, txt_file_text_extractor
 
 s3 = boto3.client("s3")
 
-files = get_files_for_current_month("bucketname")
 
-
-def AI_report_maker(files):
+def AI_report_maker(files, bucket_name):
 
     prompt = ""
 
     for key in files:
 
-        response = s3.get_object(Bucket="bucketname", Key=key)
+        response = s3.get_object(Bucket=bucket_name, Key=key)
         body = response["Body"].read()
 
         if key.endswith(".pdf"):
 
             title = f"\n\n File : {key}\n\n"
 
-            prompt += title + extract_text_from_pdf_stream("bucketname", key)
+            prompt += title + pdf_file_text_extractor(bucket_name, key)
 
         else:
 
             title = f"\n\n File : {key}\n\n"
 
-            prompt += title + scanx3_grab_all_text("bucketname", key)
-
+            prompt += title + txt_file_text_extractor(bucket_name, key)
 
 
     new_prompt = """Hello Deepseek, The following content includes extracted documents and text files related to the current month.\n Generate a structured monthly report for the company and summarize key information, insights, and any relevant patterns or decisions based on the data.\n"""
 
     prompt = new_prompt + prompt
 
-    print(prompt)
-
-    generate_AIreport(prompt)
+    AI_report_sender(prompt)
 
 
-AI_report_maker(files)
+
 
