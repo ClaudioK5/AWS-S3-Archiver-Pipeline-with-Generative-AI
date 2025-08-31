@@ -5,7 +5,8 @@ from datetime import datetime
 
 s3 = boto3.client("s3")
 
-def extract_text_from_pdf_stream(bucket_name: str, key: str):
+
+def pdf_file_text_extractor(bucket_name: str, key: str):
 
     try:
 
@@ -22,7 +23,7 @@ def extract_text_from_pdf_stream(bucket_name: str, key: str):
 
 
 
-def scanx3_grab_all_text(bucket_name: str, key: str):
+def txt_file_text_extractor(bucket_name: str, key: str):
     try:
         obj = s3.get_object(Bucket=bucket_name, Key=key)
         body = obj['Body'].read()
@@ -34,6 +35,8 @@ def scanx3_grab_all_text(bucket_name: str, key: str):
         print(f"Error reading {key}: {e}")
 
         return ""
+
+
 
 def get_files_for_current_month(bucket_name: str):
 
@@ -60,5 +63,8 @@ def get_files_for_current_month(bucket_name: str):
                 files.append(key)
 
     return files
+
+
+
 
 
