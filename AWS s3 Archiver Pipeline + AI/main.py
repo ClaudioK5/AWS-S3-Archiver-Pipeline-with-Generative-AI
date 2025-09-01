@@ -6,6 +6,8 @@ import time
 
 bucket_name = "insert here your bucket name"
 
+#the archiviation operation will take place once everyday, meanwhile the
+#generative AI report will be made on the last day of each month.
 
 while True:
 
@@ -22,6 +24,7 @@ while True:
         AI_report_maker(files, bucket_name)
 
     time.sleep(86400)
+
 
 
 
