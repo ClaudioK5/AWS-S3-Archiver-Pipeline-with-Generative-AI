@@ -6,6 +6,7 @@ import time
 import os
 
 bucket_name = os.getenv("BUCKET_NAME")
+print(f"Bucket env: {bucket_name}")
 
 #the archiviation operation will take place once everyday, meanwhile the
 #generative AI report will be made on the last day of each month.
@@ -25,6 +26,7 @@ while True:
         AI_report_maker(files, bucket_name)
 
     time.sleep(86400)
+
 
 
 
