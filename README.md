@@ -4,5 +4,5 @@ A Generative AI model powered by **DeepSeek** is integrated to produce on the la
 
 The pipeline is fully containerized using Docker for easy deployment, portability, and environment consistency.
 
-A GitHub Actions CI-CD pipeline has been integrated to automatically install dependencies, check syntas, amd run the project on every push to the main branch.
+A GitHub Actions CI-CD pipeline has been integrated to automatically install dependencies, check syntax, amd run the project on every push to the main branch.
 
