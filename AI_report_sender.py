@@ -1,8 +1,9 @@
 from openai import OpenAI
 from email_sender import send_email
+import os
 
 client = OpenAI(
-    api_key="insert here your deepseek api key",
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
     base_url="https://api.deepseek.com/v1"
 )
 
@@ -24,3 +25,4 @@ def AI_report_sender(prompt):
     except Exception as e:
 
         return {"error": str(e)}
+
