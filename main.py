@@ -25,7 +25,11 @@ while True:
 
         AI_report_maker(files, bucket_name)
 
+    # break is intended for CI/CD pipeline testing. it will be removed when used in a practical production environment.
+    break
+
     time.sleep(86400)
+
 
 
 
