@@ -12,6 +12,16 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      AWS_ACCESS_KEY_ID: $ {{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: $ {{ secrets.AWS_SECRET_ACCESS_KEY }}
+      BUCKET_NAME: $ {{ secrets.BUCKET_NAME }}
+      DEEPSEEK_API_KEY: $ {{ secrets.DEEPSEEK_API_KEY }}
+      MY_EMAIL: $ {{ secrets.MY_EMAIL }}
+      BOT_EMAIL: $ {{ secrets.BOT_EMAIL }}
+      BOT_EMAIL_PASSWORD: $ {{ secrets.BOT_EMAIL_PASSWORD }}
+    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
