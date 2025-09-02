@@ -7,6 +7,8 @@ client = OpenAI(
     base_url="https://api.deepseek.com/v1"
 )
 
+my_email = os.getenv("MY_EMAIL")
+
 
 def AI_report_sender(prompt):
 
@@ -20,9 +22,10 @@ def AI_report_sender(prompt):
 
         subject = 'AI AWS report for the current month'
 
-        send_email('insert here your email', subject, ai_output)
+        send_email(my_email, subject, ai_output)
 
     except Exception as e:
 
         return {"error": str(e)}
+
 
